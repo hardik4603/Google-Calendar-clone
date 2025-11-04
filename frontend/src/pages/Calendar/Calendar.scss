@@ -1,0 +1,59 @@
+.calendar-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+  }
+  
+  /* Main Layout */
+  .calendar-layout {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  /* Main Content */
+  .calendar-main {
+    flex: 1;
+    background: var(--bg-primary);
+    border-radius: 24px;
+    overflow: auto;
+    transition: all 0.3s ease;
+  }
+  
+  /* When sidebar is open or closed */
+  .sidebar-open .calendar-main {
+    margin-left: 0;
+  }
+  
+  .sidebar-closed .calendar-main {
+    flex: 1;
+    width: 100%;
+  }
+  
+  /* Responsive behavior */
+  @media (max-width: 900px) {
+    .calendar-sidebar {
+      position: absolute;
+      z-index: 20;
+      top: 60px; /* below header */
+      left: 0;
+      height: calc(100% - 60px);
+      border-radius: 0 16px 16px 0;
+      background: var(--bg-sidebar);
+      transition: transform 0.3s ease;
+    }
+  
+    .calendar-sidebar.hide {
+      transform: translateX(-100%);
+    }
+  
+    .calendar-main {
+      width: 100%;
+    }
+  }

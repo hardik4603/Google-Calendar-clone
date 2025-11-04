@@ -1,0 +1,294 @@
+// ============================================
+// MAIN.SCSS - Google Calendar Theme System
+// ============================================
+
+// Import partials
+@import "./variables";
+@import "./mixins";
+@import "./reset";
+@import "./typography";
+
+// ============================================
+// THEME COLOR VARIABLES
+// ============================================
+
+:root {
+  // ==========================================
+  // LIGHT THEME (Default)
+  // ==========================================
+
+  // Primary Colors
+  --primary-blue: #1a73e8;
+  --primary-blue-hover: #1557b0;
+  --primary-blue-light: #e8f0fe;
+
+  // Background Colors
+  --bg-primary: #ffffff;
+  --bg-secondary: #f1f3f4b8;
+  --bg-tertiary: #f8f9fa;
+  --bg-hover: #283b4525;
+  --bg-active: #e8eaed;
+  --bg-modal: #ffffff;
+  --bg-sidebar: #ffffff;
+  --bg-dropdown: #f8fafc;
+
+  // Text Colors
+  --text-primary: black;
+  --text-secondary: #000000;
+  --text-tertiary: #80868b;
+  --text-disabled: #9aa0a6;
+  --text-inverse: #ffffff;
+
+  // Border Colors
+  --border-light: #dadce0;
+  --border-medium: #e8eaed;
+  --border-dark: #5f6368;
+  --border-hover: #dadce0;
+
+  // Calendar Specific
+  --calendar-grid-border: #dadce0;
+  --calendar-today-bg: #e8f0fe;
+  --calendar-today-border: #1a73e8;
+  --calendar-weekend-bg: #f8f9fa;
+  --calendar-other-month: #9aa0a6;
+
+  // Event Colors (Google Calendar palette)
+  --event-blue: #039be5;
+  --event-green: #0b8043;
+  --event-red: #d50000;
+  --event-yellow: #f09300;
+  --event-orange: #e67c73;
+  --event-purple: #9334e6;
+  --event-gray: #616161;
+  --event-pink: #d81b60;
+  --event-brown: #795548;
+  --event-teal: #009688;
+  --event-indigo: #3f51b5;
+
+  --event-blue-bg: #e3f2fd;
+  --event-green-bg: #e8f5e9;
+  --event-red-bg: #ffebee;
+  --event-yellow-bg: #fff8e1;
+  --event-orange-bg: #fce4ec;
+  --event-purple-bg: #f3e5f5;
+  --event-gray-bg: #f5f5f5;
+  --event-pink-bg: #fce4ec;
+  --event-brown-bg: #efebe9;
+  --event-teal-bg: #e0f2f1;
+  --event-indigo-bg: #e8eaf6;
+
+  // Shadow
+  --shadow-sm: 0 1px 2px 0 rgba(60, 64, 67, 0.3);
+  --shadow-md: 0 1px 3px 0 rgba(60, 64, 67, 0.3),
+    0 4px 8px 3px rgba(60, 64, 67, 0.15);
+  --shadow-lg: 0 2px 6px 2px rgba(60, 64, 67, 0.15),
+    0 8px 24px 0 rgba(60, 64, 67, 0.15);
+  --shadow-xl: 0 8px 12px 6px rgba(60, 64, 67, 0.15),
+    0 4px 4px 0 rgba(60, 64, 67, 0.3);
+
+  // Time Grid
+  --time-label-color: #70757a;
+  --current-time-indicator: #ea4335;
+
+  // Scrollbar
+  --scrollbar-track: #f1f3f4;
+  --scrollbar-thumb: #dadce0;
+  --scrollbar-thumb-hover: #bdc1c6;
+
+  // Input & Form
+  --input-bg: #ffffff;
+  --input-border: #dadce0;
+  --input-border-focus: #1a73e8;
+  --input-text: #3c4043;
+
+  // Button
+  --button-primary-bg: #1a73e8;
+  --button-primary-hover: #1557b0;
+  --button-primary-text: #ffffff;
+  --button-secondary-bg: transparent;
+  --button-secondary-hover: #f1f3f4;
+  --button-secondary-text: #1a73e8;
+
+  // Overlay
+  --overlay-bg: rgba(0, 0, 0, 0.6);
+}
+
+// ==========================================
+// DARK THEME
+// ==========================================
+
+[data-theme="dark"] {
+  // Primary Colors
+  --primary-blue: #8ab4f8;
+  --primary-blue-hover: #aecbfa;
+  --primary-blue-light: #1f3a52;
+
+  // Background Colors
+  --bg-primary: #202124;
+  --bg-secondary: #292a2d;
+  --bg-tertiary: #303134;
+  --bg-hover: #283b4525;
+  --bg-active: #3c4043;
+  --bg-modal: #292a2d;
+  --bg-sidebar: #292a2d;
+  --bg-dropdown: #202124;
+
+  // Text Colors
+  --text-primary: #e8eaed;
+  --text-secondary: #9aa0a6;
+  --text-tertiary: #80868b;
+  --text-disabled: #5f6368;
+  --text-inverse: #202124;
+
+  // Border Colors
+  --border-light: #3c4043;
+  --border-medium: #5f6368;
+  --border-dark: #9aa0a6;
+  --border-hover: #5f6368;
+
+  // Calendar Specific
+  --calendar-grid-border: #3c4043;
+  --calendar-today-bg: #1f3a52;
+  --calendar-today-border: #8ab4f8;
+  --calendar-weekend-bg: #28292c;
+  --calendar-other-month: #5f6368;
+
+  // Event Colors (Adjusted for dark theme - slightly lighter)
+  --event-blue: #4fc3f7;
+  --event-green: #81c784;
+  --event-red: #e57373;
+  --event-yellow: #ffd54f;
+  --event-orange: #ffb74d;
+  --event-purple: #ba68c8;
+  --event-gray: #90a4ae;
+  --event-pink: #f06292;
+  --event-brown: #a1887f;
+  --event-teal: #4db6ac;
+  --event-indigo: #7986cb;
+
+  // Event Background Colors (darker versions)
+  --event-blue-bg: #1e3a5f;
+  --event-green-bg: #1b4d2c;
+  --event-red-bg: #5c1f1f;
+  --event-yellow-bg: #5c4d1f;
+  --event-orange-bg: #5c3d1f;
+  --event-purple-bg: #4a2c5c;
+  --event-gray-bg: #3a3a3a;
+  --event-pink-bg: #5c2c42;
+  --event-brown-bg: #4a3933;
+  --event-teal-bg: #1f4d47;
+  --event-indigo-bg: #2c3557;
+
+  // Shadow (adjusted for dark theme)
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.6);
+  --shadow-md: 0 1px 3px 0 rgba(0, 0, 0, 0.6), 0 4px 8px 3px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 2px 6px 2px rgba(0, 0, 0, 0.4), 0 8px 24px 0 rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 8px 12px 6px rgba(0, 0, 0, 0.4), 0 4px 4px 0 rgba(0, 0, 0, 0.6);
+
+  // Time Grid
+  --time-label-color: #9aa0a6;
+  --current-time-indicator: #f28b82;
+
+  // Scrollbar
+  --scrollbar-track: #292a2d;
+  --scrollbar-thumb: #5f6368;
+  --scrollbar-thumb-hover: #80868b;
+
+  // Input & Form
+  --input-bg: #303134;
+  --input-border: #5f6368;
+  --input-border-focus: #8ab4f8;
+  --input-text: #e8eaed;
+
+  // Button
+  --button-primary-bg: #8ab4f8;
+  --button-primary-hover: #aecbfa;
+  --button-primary-text: #202124;
+  --button-secondary-bg: transparent;
+  --button-secondary-hover: #303134;
+  --button-secondary-text: #8ab4f8;
+
+  // Overlay
+  --overlay-bg: rgba(0, 0, 0, 0.8);
+}
+
+// ==========================================
+// BASE STYLES
+// ==========================================
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Google Sans", "Roboto", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+// ==========================================
+// CUSTOM SCROLLBAR
+// ==========================================
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+// ==========================================
+// TRANSITIONS
+// ==========================================
+
+a,
+button,
+input,
+textarea,
+select {
+  transition: all 0.2s ease;
+}
+
+// ==========================================
+// FOCUS STATES
+// ==========================================
+
+*:focus-visible {
+  outline: 2px solid var(--primary-blue);
+  outline-offset: 2px;
+}
+
+// ==========================================
+// UTILITY CLASSES
+// ==========================================
+
+.theme-transition {
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+// Hide scrollbar but keep functionality
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

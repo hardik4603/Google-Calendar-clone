@@ -1,0 +1,255 @@
+// ============================================
+// MINI CALENDAR STYLES
+// ============================================
+
+.mini-calendar {
+    padding: 8px 12px;
+    margin-bottom: 8px;
+  
+    // Calendar Header (Month, Year, Navigation)
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+  
+      .month-year {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-primary);
+      }
+  
+      .nav-buttons {
+        display: flex;
+        gap: 4px;
+  
+        .nav-btn {
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 4px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--text-secondary);
+          transition: background 0.2s ease;
+  
+          &:hover {
+            background: var(--bg-hover);
+          }
+  
+          &:active {
+            background: var(--bg-active);
+          }
+  
+          svg {
+            width: 16px;
+            height: 16px;
+          }
+        }
+      }
+    }
+  
+    // Calendar Grid
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+  
+      // Day Headers (S M T W T F S)
+      .day-header {
+        text-align: center;
+        font-size: 11px;
+        font-weight: 500;
+        color: var(--time-label-color);
+        padding: 4px 0;
+        text-transform: uppercase;
+      }
+  
+      // Day Cells
+      .day-cell {
+        aspect-ratio: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        color: var(--text-primary);
+        cursor: pointer;
+        border-radius: 50%;
+        transition: background 0.2s ease;
+        position: relative;
+  
+        // Hover effect (only for current month days)
+        &:hover:not(.prev-month):not(.next-month) {
+          background: var(--bg-hover);
+        }
+  
+        // Previous/Next month days
+        &.prev-month,
+        &.next-month {
+          color: var(--calendar-other-month);
+          cursor: default;
+  
+          &:hover {
+            background: transparent;
+          }
+        }
+  
+        // Today's date
+        &.today {
+          background: var(--primary-blue);
+          color: var(--text-inverse);
+          font-weight: 500;
+  
+          &:hover {
+            background: var(--primary-blue-hover);
+          }
+        }
+  
+        // Selected date (optional)
+        &.selected:not(.today) {
+          background: var(--calendar-today-bg);
+          font-weight: 500;
+  
+          &:hover {
+            background: var(--bg-active);
+          }
+        }
+  
+        // Weekend styling (optional)
+        &.weekend:not(.today):not(.selected) {
+          color: var(--text-secondary);
+        }
+  
+        // Has events indicator (optional)
+        &.has-events::after {
+          content: "";
+          position: absolute;
+          bottom: 2px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 4px;
+          height: 4px;
+          border-radius: 50%;
+          background: var(--primary-blue);
+        }
+  
+        &.today.has-events::after {
+          background: var(--text-inverse);
+        }
+      }
+    }
+  }
+  
+  // ============================================
+  // RESPONSIVE ADJUSTMENTS
+  // ============================================
+  
+  @media (max-width: 768px) {
+    .mini-calendar {
+      padding: 6px 8px;
+  
+      .calendar-header {
+        margin-bottom: 8px;
+  
+        .month-year {
+          font-size: 13px;
+        }
+      }
+  
+      .calendar-grid {
+        gap: 1px;
+  
+        .day-header {
+          font-size: 10px;
+          padding: 3px 0;
+        }
+  
+        .day-cell {
+          font-size: 11px;
+        }
+      }
+    }
+  }
+  
+  // ============================================
+  // DARK THEME SPECIFIC ADJUSTMENTS
+  // ============================================
+  
+  [data-theme="dark"] {
+    .mini-calendar {
+      .calendar-grid {
+        .day-cell {
+          &:hover:not(.prev-month):not(.next-month):not(.today) {
+            background: var(--bg-hover);
+          }
+  
+          &.today {
+            background: var(--primary-blue);
+            color: var(--text-inverse);
+  
+            &:hover {
+              background: var(--primary-blue-hover);
+            }
+          }
+  
+          &.selected:not(.today) {
+            background: var(--calendar-today-bg);
+          }
+        }
+      }
+    }
+  }
+  
+  // ============================================
+  // ACCESSIBILITY
+  // ============================================
+  
+  .mini-calendar {
+    .calendar-grid {
+      .day-cell {
+        &:focus-visible {
+          outline: 2px solid var(--primary-blue);
+          outline-offset: -2px;
+          z-index: 1;
+        }
+      }
+    }
+  
+    .calendar-header {
+      .nav-btn {
+        &:focus-visible {
+          outline: 2px solid var(--primary-blue);
+          outline-offset: 2px;
+        }
+      }
+    }
+  }
+  
+  // ============================================
+  // ANIMATION (Optional)
+  // ============================================
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .mini-calendar {
+    animation: fadeIn 0.2s ease-out;
+  
+    .calendar-grid {
+      .day-cell {
+        &.today {
+          animation: fadeIn 0.3s ease-out;
+        }
+      }
+    }
+  }

@@ -1,0 +1,187 @@
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    padding: 0.7rem 1.6rem;
+    font-size: 1rem;
+    color: var(--text-primary);
+  
+    .icon {
+      font-size: 1.8rem;
+      margin: 0 0.2rem;
+      cursor: pointer;
+      color: var(--text-primary);
+      padding: 0.4rem;
+  
+      &:hover {
+        background: var(--bg-hover);
+        border-radius: 50%;
+      }
+    }
+  
+    .icon.hamburger-icon:hover {
+      border-radius: 0;
+    }
+  
+    .left-section {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+  
+      .logo {
+        display: flex;
+        align-items: center;
+  
+        img {
+          height: 2rem;
+          margin-right: 0.4rem;
+        }
+  
+        .title {
+          font-size: 1.4rem;
+          font-weight: 500;
+        }
+      }
+  
+      .today-btn {
+        background: transparent;
+        border: 1px solid var(--border-dark);
+        border-radius: 2rem;
+        padding: 0.4rem 1rem;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.2s ease;
+  
+        &:hover {
+          background: var(--bg-hover);
+        }
+      }
+  
+      .nav-arrows {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+  
+        .arrow {
+          font-size: 1.5rem;
+          cursor: pointer;
+          padding: 0 0.4rem;
+          color: var(--text-primary);
+          transition: background 0.2s ease;
+  
+          &:hover {
+            background: var(--bg-hover);
+            border-radius: 50%;
+          }
+        }
+      }
+  
+      .date {
+        font-size: 1.25rem;
+        margin-left: 0.6rem;
+        font-weight: 500;
+      }
+    }
+  
+    .right-section {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+  
+      .view-selector {
+        position: relative;
+  
+        .dropdown-toggle {
+          border: 1px solid var(--border-dark);
+          border-radius: 2rem;
+          background-color: transparent;
+          font-size: 0.9rem;
+          padding: 0.5rem 1.2rem;
+          cursor: pointer;
+          color: var(--text-primary);
+          transition: background 0.2s ease;
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+  
+          &:hover {
+            background: var(--bg-hover);
+          }
+        }
+  
+        .custom-dropdown {
+          position: absolute;
+          top: 120%;
+          left: 10px;
+          background-color: var(--bg-dropdown);
+          border-radius: 0.5rem;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+          width: 160px;
+          z-index: 2000;
+          overflow: hidden;
+  
+          .dropdown-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 1rem;
+            font-size: 0.95rem;
+            cursor: pointer;
+            color: var(--text-primary);
+            transition: background 0.2s ease;
+  
+            &:hover {
+              background: var(--bg-hover);
+            }
+  
+            .shortcut {
+              color: var(--text-secondary);
+              font-size: 0.85rem;
+            }
+          }
+        }
+      }
+  
+      .view-buttons {
+        display: flex;
+        border: 1px solid var(--border-dark);
+        border-radius: 2rem;
+        overflow: hidden;
+  
+        button {
+          border: none;
+          background: none;
+          padding: 0.5rem 1.2rem;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.1rem;
+          transition: background 0.2s ease;
+  
+          &.active {
+            background: var(--bg-hover);
+          }
+  
+          &:hover {
+            background: var(--bg-hover);
+          }
+        }
+      }
+  
+      .profile {
+        background: #d93025;
+        color: #fff;
+        font-weight: 600;
+        border-radius: 50%;
+        width: 2.4rem;
+        height: 2.4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        cursor: pointer;
+      }
+    }
+  }
